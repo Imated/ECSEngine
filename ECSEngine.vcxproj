@@ -235,7 +235,7 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>;D:\Dev\vcpkg\installed\x64-windows\include;D:\Dev\Apps\ECSEngine\libs\glm;D:\Dev\Apps\ECSEngine\libs\glad\include;D:\Dev\Apps\ECSEngine\libs\SDL2\include;D:\Dev\Apps\ECSEngine\src;;D:\Dev\vcpkg\installed\x64-windows\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>;D:\Dev\vcpkg\installed\x64-windows\include;D:\Dev\Github Repos\ECSEngine\libs\glm;D:\Dev\Github Repos\ECSEngine\libs\glad\include;D:\Dev\Github Repos\ECSEngine\libs\SDL2\include;D:\Dev\Github Repos\ECSEngine\src;;D:\Dev\vcpkg\installed\x64-windows\include</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="src\Game\Scene.cpp" />
@@ -312,7 +312,7 @@
       <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>;D:\Dev\vcpkg\installed\x64-windows\include;D:\Dev\Apps\ECSEngine\libs\glm;D:\Dev\Apps\ECSEngine\libs\glad\include;D:\Dev\Apps\ECSEngine\libs\SDL2\include;D:\Dev\Apps\ECSEngine\src;;D:\Dev\vcpkg\installed\x64-windows\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>;D:\Dev\vcpkg\installed\x64-windows\include;D:\Dev\Github Repos\ECSEngine\libs\glm;D:\Dev\Github Repos\ECSEngine\libs\glad\include;D:\Dev\Github Repos\ECSEngine\libs\SDL2\include;D:\Dev\Github Repos\ECSEngine\src;;D:\Dev\vcpkg\installed\x64-windows\include</AdditionalIncludeDirectories>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="src\Rendering\Shader.cpp" />

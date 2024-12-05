@@ -58,8 +58,10 @@ void TransformComponent::RecalculateTransformationMatrix()
 {
     transformationMatrix = glm::mat4(1.0f);
     transformationMatrix = glm::translate(transformationMatrix, position);
+    transformationMatrix = glm::translate(transformationMatrix, glm::vec3(16.0f, 16.0f, 0.0f));
     transformationMatrix = glm::rotate(transformationMatrix, rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
     transformationMatrix = glm::rotate(transformationMatrix, rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
     transformationMatrix = glm::rotate(transformationMatrix, rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
+    transformationMatrix = glm::translate(transformationMatrix, glm::vec3(-16.0f, -16.0f, 0.0f));
     transformationMatrix = glm::scale(transformationMatrix, scale);
 }

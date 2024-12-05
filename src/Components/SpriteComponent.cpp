@@ -13,17 +13,13 @@ void SpriteComponent::Initialize(Entity& e)
     shader = Shader("res/Default.vert", "res/Default.frag");
     GLuint VBO;
     GLuint EBO;
-    auto topLeft = glm::vec2(0);
-    auto topRight = glm::vec2(0);
-    auto bottomLeft = glm::vec2(0);
-    auto bottomRight = glm::vec2(0);
 
-    float x = 0;
-    float y = 0;
-    topLeft = glm::vec2(x, y);
-    topRight = glm::vec2(x + 32, y); // w
-    bottomLeft = glm::vec2(x, y + 32); // h
-    bottomRight = glm::vec2(x + 32, y + 32); // w, h
+    constexpr float x = 0;
+    constexpr float y = 0;
+    constexpr auto topLeft = glm::vec2(x, y);
+    constexpr auto topRight = glm::vec2(x + 32, y); // w
+    constexpr auto bottomLeft = glm::vec2(x, y + 32); // h
+    constexpr auto bottomRight = glm::vec2(x + 32, y + 32); // w, h
     
     GLfloat vertices[] =
     {
@@ -51,9 +47,9 @@ void SpriteComponent::Initialize(Entity& e)
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), nullptr);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), nullptr);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), reinterpret_cast<void*>(3 * sizeof(float)));
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), reinterpret_cast<void*>(2 * sizeof(float)));
     glEnableVertexAttribArray(1);
     
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -63,7 +59,6 @@ void SpriteComponent::Initialize(Entity& e)
 void SpriteComponent::Render(float deltaTime, Entity& e, Window& window)
 {
     shader.Activate();
-    const float aspectRatio = window.GetAspectRatio();
     float width = window.GetSize().x;
     float height = window.GetSize().y;
     glm::mat4x4 projection = glm::ortho(0.0f, width, height, 0.0f, -1.0f, 1.0f);

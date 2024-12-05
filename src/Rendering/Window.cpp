@@ -110,8 +110,3 @@ SDL_Window* Window::GetWindow() const
 {
     return window;
 }
-
-float Window::GetAspectRatio() const
-{
-    return static_cast<float>(params.width) / static_cast<float>(params.height);
-}

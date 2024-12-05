@@ -21,7 +21,6 @@ public:
     static float GetTime();
     SDL_Window* GetWindow() const;
     glm::vec2 GetSize() { return { params.width, params.height }; }
-    float GetAspectRatio() const;
     bool IsOpen() const;
 
 private:

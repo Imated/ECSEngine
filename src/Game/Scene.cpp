@@ -32,27 +32,27 @@ Scene::Scene()
 void Scene::Update(float deltaTime)
 {
     static float ROT_SPEED = 1.5f;
-    static float MOVE_SPEED = 0.75f;
-    static float ACCELERATION = 0.15f;
+    static float MOVE_SPEED = 750.0f;
+    static float ACCELERATION = 50.0f;
     Input& input = Game::GetInput();
     if(input.GetKey(SDLK_a))
     {
-        playerTransform->SetRotationZ(playerTransform->GetRotationZ() + ROT_SPEED * deltaTime);
+        playerTransform->SetRotationZ(playerTransform->GetRotationZ() - ROT_SPEED * deltaTime);
         direction = ROT_SPEED / 1.5f;
     }
     else if(input.GetKey(SDLK_d))
     {
-        playerTransform->SetRotationZ(playerTransform->GetRotationZ() - ROT_SPEED * deltaTime);
+        playerTransform->SetRotationZ(playerTransform->GetRotationZ() + ROT_SPEED * deltaTime);
         direction = -ROT_SPEED / 1.5f;
     }
     else
     {
-        playerTransform->SetRotationZ(playerTransform->GetRotationZ() + direction * deltaTime);
+        playerTransform->SetRotationZ(playerTransform->GetRotationZ() - direction * deltaTime);
     }
 
     if(input.GetKey(SDLK_SPACE))
     {
-        velocity += glm::vec2(-sin(playerTransform->GetRotationZ()), cos(playerTransform->GetRotationZ())) * ACCELERATION * deltaTime;
+        velocity += glm::vec2(sin(playerTransform->GetRotationZ()), -cos(playerTransform->GetRotationZ())) * ACCELERATION * deltaTime;
         velocity = glm::vec2(glm::clamp(velocity.x, -MOVE_SPEED, MOVE_SPEED), glm::clamp(velocity.y, -MOVE_SPEED, MOVE_SPEED));
     }
     playerTransform->SetPosition(glm::vec3(playerTransform->GetPosition().x + velocity.x * deltaTime, playerTransform->GetPosition().y + velocity.y * deltaTime, 0.0f));

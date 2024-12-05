@@ -42,8 +42,9 @@ int Shader::GetUniformLocation(const char* name) const
     const int location = glGetUniformLocation(shaderID, name);
     if (location == -1)
     {
-        const char* msg = ("Could not find uniform variable with name of '" + std::string(name) + "'! Not loading shader...").c_str();
-        WARN(msg);
+        std::string msg = "Could not find uniform variable with name of '" + std::string(name) + "'! Not loading shader...";
+        const char* warningLog = msg.c_str();
+        WARN(warningLog);
     }
     return location;
 }
