@@ -37,7 +37,7 @@ void LogError()
     }
 }
 
-Texture::Texture(const char* filename, GLfloat pixelsPerUnit, GLint wrapMode, GLint filterMode)
+Texture::Texture(const char* filename, GLint wrapMode, GLint filterMode)
 {
     int nrChannels;
     stbi_set_flip_vertically_on_load(true);
@@ -55,11 +55,6 @@ Texture::Texture(const char* filename, GLfloat pixelsPerUnit, GLint wrapMode, GL
 
     float borderColor[] = {PRIMARY_COLOR.x, PRIMARY_COLOR.y, PRIMARY_COLOR.z, 1.0f};
     glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
-
-    if(pixelsPerUnit != 0.0f)
-        this->pixelsPerUnit = pixelsPerUnit;
-    else
-        this->pixelsPerUnit = static_cast<float>(width);
     
     LogError();
     INFO("Texture Loaded.");
