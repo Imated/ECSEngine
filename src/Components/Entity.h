@@ -14,8 +14,8 @@ class Component
 {
 public:
     virtual ~Component() = default;
-    virtual void Initialize(Entity& e) = 0;
-    virtual void Render(float deltaTime, Entity& e, Window& window) = 0;
+    virtual void initialize(Entity& e) = 0;
+    virtual void render(float deltaTime, Entity& e, Window& window) = 0;
 };
 
 class Entity
@@ -32,7 +32,7 @@ public:
         static_assert(std::is_base_of_v<Component, T>, "T must derive from Component!");
         components.emplace_back(std::make_unique<T>(std::forward<Args>(args)...));
         T* component = GetComponent<T>();
-        component->Initialize(*this);
+        component->initialize(*this);
         return component;
     }
 

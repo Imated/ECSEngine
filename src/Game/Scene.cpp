@@ -19,7 +19,7 @@ Scene::Scene()
     player = Entity();
     playerTransform = player.GetComponent<TransformComponent>();
     playerRenderer = player.AddComponent<SpriteComponent>(new Texture("res/Player.png"));
-    playerTransform->SetScale(glm::vec3(1.0f));
+    playerTransform->setScale(glm::vec3(1.0f));
 
     float randMin = -2.0f;
     float randMax = 2.0f;
@@ -37,28 +37,28 @@ void Scene::Update(float deltaTime)
     Input& input = Game::GetInput();
     if(input.GetKey(SDLK_a))
     {
-        playerTransform->SetRotationZ(playerTransform->GetRotationZ() - ROT_SPEED * deltaTime);
+        playerTransform->setRotation(playerTransform->getRotation().z - ROT_SPEED * deltaTime);
         direction = ROT_SPEED / 1.5f;
     }
     else if(input.GetKey(SDLK_d))
     {
-        playerTransform->SetRotationZ(playerTransform->GetRotationZ() + ROT_SPEED * deltaTime);
+        playerTransform->setRotation(playerTransform->getRotation().z + ROT_SPEED * deltaTime);
         direction = -ROT_SPEED / 1.5f;
     }
     else
     {
-        playerTransform->SetRotationZ(playerTransform->GetRotationZ() - direction * deltaTime);
+        playerTransform->setRotation(playerTransform->getRotation().z - direction * deltaTime);
     }
 
     if(input.GetKey(SDLK_SPACE))
     {
-        velocity += glm::vec2(sin(playerTransform->GetRotationZ()), -cos(playerTransform->GetRotationZ())) * ACCELERATION * deltaTime;
+        velocity += glm::vec2(sin(playerTransform->getRotation().z), -cos(playerTransform->getRotation().z)) * ACCELERATION * deltaTime;
         velocity = glm::vec2(glm::clamp(velocity.x, -MOVE_SPEED, MOVE_SPEED), glm::clamp(velocity.y, -MOVE_SPEED, MOVE_SPEED));
     }
-    playerTransform->SetPosition(glm::vec3(playerTransform->GetPosition().x + velocity.x * deltaTime, playerTransform->GetPosition().y + velocity.y * deltaTime, 0.0f));
+    playerTransform->setPosition(glm::vec3(playerTransform->getPosition().x + velocity.x * deltaTime, playerTransform->getPosition().y + velocity.y * deltaTime, 0.0f));
 }
 
 void Scene::Render()
 {
-    playerRenderer->Render(0, player, Game::GetWindow());
+    playerRenderer->render(0, player, Game::GetWindow());
 }

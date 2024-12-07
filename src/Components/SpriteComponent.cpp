@@ -8,7 +8,7 @@ SpriteComponent::~SpriteComponent()
     shader.Delete();
 }
 
-void SpriteComponent::Initialize(Entity& e)
+void SpriteComponent::initialize(Entity& e)
 {
     shader = Shader("res/Default.vert", "res/Default.frag");
     GLuint VBO;
@@ -56,14 +56,14 @@ void SpriteComponent::Initialize(Entity& e)
     glBindVertexArray(0);
 }
 
-void SpriteComponent::Render(float deltaTime, Entity& e, Window& window)
+void SpriteComponent::render(float deltaTime, Entity& e, Window& window)
 {
     shader.Activate();
     float width = window.GetSize().x;
     float height = window.GetSize().y;
     glm::mat4x4 projection = glm::ortho(0.0f, width, height, 0.0f, -1.0f, 1.0f);
     glm::mat4x4 mvp = projection;
-    mvp *= e.GetComponent<TransformComponent>()->GetTransformationMatrix();
+    mvp *= e.GetComponent<TransformComponent>()->getTransformationMatrix();
     shader.SetMatrix4x4("mvp", value_ptr(mvp));
     
     if(texture != nullptr)

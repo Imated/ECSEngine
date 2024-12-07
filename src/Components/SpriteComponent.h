@@ -14,8 +14,8 @@ public:
 
     ~SpriteComponent() override;
 
-    void Initialize(Entity& e) override;
-    void Render(float deltaTime, Entity& e, Window& window) override;
+    void initialize(Entity& e) override;
+    void render(float deltaTime, Entity& e, Window& window) override;
 
     Shader GetShader() const
     {

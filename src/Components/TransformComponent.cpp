@@ -1,67 +1,48 @@
 ﻿#include "TransformComponent.h"
-
-#include "Game/Game.h"
 #include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtx/quaternion.hpp"
 
-TransformComponent::~TransformComponent()
+TransformComponent::TransformComponent() { }
+
+TransformComponent::~TransformComponent() { }
+
+void TransformComponent::initialize(Entity& e)
 {
-    
+    recalculateTransformationMatrix();
 }
 
-void TransformComponent::Initialize(Entity& e)
-{
-    RecalculateTransformationMatrix();
-}
+void TransformComponent::render(float deltaTime, Entity& e, Window& window) { }
 
-void TransformComponent::Render(float deltaTime, Entity& e, Window& window)
-{
-    
-}
-
-void TransformComponent::SetPosition(glm::vec3 newPosition)
+void TransformComponent::setPosition(glm::vec3 newPosition)
 {
     position = newPosition;
-    RecalculateTransformationMatrix();
+    recalculateTransformationMatrix();
 }
 
-void TransformComponent::SetPositionX(float newPosition)
+void TransformComponent::setRotation(glm::vec3 newRotation)
 {
-    position.x = newPosition;
-    RecalculateTransformationMatrix();
+    rotation = glm::quat(glm::radians(newRotation));
+    recalculateTransformationMatrix();
 }
 
-void TransformComponent::SetPositionY(float newPosition)
+void TransformComponent::setRotation(float newRotation)
 {
-    position.y = newPosition;
-    RecalculateTransformationMatrix();
+    auto euler = glm::eulerAngles(rotation);
+    euler.z = newRotation;
+    rotation = glm::quat(euler);
+    recalculateTransformationMatrix();
 }
 
-void TransformComponent::SetRotation(glm::vec3 newRotation)
+void TransformComponent::setScale(glm::vec3 newScale)
 {
-    rotation = newRotation;
-    RecalculateTransformationMatrix();
+    _scale = newScale;
+    recalculateTransformationMatrix();
 }
 
-void TransformComponent::SetRotationZ(float newRotation)
+void TransformComponent::recalculateTransformationMatrix()
 {
-    rotation.z = newRotation;
-    RecalculateTransformationMatrix();
-}
-
-void TransformComponent::SetScale(glm::vec3 newScale)
-{
-    scale = newScale;
-    RecalculateTransformationMatrix();
-}
-
-void TransformComponent::RecalculateTransformationMatrix()
-{
-    transformationMatrix = glm::mat4(1.0f);
-    transformationMatrix = glm::translate(transformationMatrix, position);
-    transformationMatrix = glm::translate(transformationMatrix, glm::vec3(16.0f, 16.0f, 0.0f));
-    transformationMatrix = glm::rotate(transformationMatrix, rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
-    transformationMatrix = glm::rotate(transformationMatrix, rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
-    transformationMatrix = glm::rotate(transformationMatrix, rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
-    transformationMatrix = glm::translate(transformationMatrix, glm::vec3(-16.0f, -16.0f, 0.0f));
-    transformationMatrix = glm::scale(transformationMatrix, scale);
+    glm::mat4 T = translate(glm::mat4(1.0f), position);
+    glm::mat4 R = toMat4(rotation);
+    glm::mat4 S = scale(glm::mat4(1.0f), _scale);
+    transformationMatrix = T * R * S;
 }
