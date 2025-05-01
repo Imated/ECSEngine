@@ -1,9 +1,11 @@
 ﻿#pragma once
-#include "Entity.h"
+#include "Component.h"
 #include "glm/fwd.hpp"
 #include "glm/detail/type_quat.hpp"
 #include "glm/gtc/quaternion.hpp"
 #include "Rendering/Renderer.h"
+
+class Entity;
 
 class TransformComponent : public Component
 {

@@ -2,6 +2,7 @@
 
 #include <random>
 
+#include "Components/Camera.h"
 #include "Components/Entity.h"
 #include "Components/SpriteComponent.h"
 #include "Components/TransformComponent.h"
@@ -12,8 +13,15 @@ SpriteComponent* playerRenderer;
 float direction;
 glm::vec2 velocity;
 float last = 0;
+
+Entity camera;
+Camera* cameraComponent;  
 Scene::Scene()
 {
+    camera = Entity();
+    cameraComponent = camera.AddComponent<Camera>(true);
+    cameraComponent->zoom = 0.5;
+    
     player = Entity();
     playerTransform = player.GetComponent<TransformComponent>();
     playerRenderer = player.AddComponent<SpriteComponent>(new Texture("res/Player.png"));
@@ -58,5 +66,5 @@ void Scene::update(float deltaTime)
 
 void Scene::render(Window* window, Renderer* renderer)
 {
-    playerRenderer->render(player, *window, *renderer);
+    playerRenderer->render(player, *window, *renderer, cameraComponent);
 }

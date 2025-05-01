@@ -6,17 +6,10 @@
 #include "Rendering/Renderer.h"
 #include "Rendering/Window.h"
 #include "Utils/Logger.h"
+#include "Components/TransformComponent.h"
 
-class TransformComponent;
 class Entity;
-
-class Component
-{
-public:
-    virtual ~Component() = default;
-    virtual void initialize(Entity& e) = 0;
-    virtual void update(Entity& e) = 0;
-};
+class Component;
 
 class Entity
 {
