@@ -53,12 +53,12 @@ Window::Window(int width, int height, const std::string& title): isOpen(true)
     DEBUG("Initialized Successfully.");
 }
 
-void Window::Update()
+void Window::swapBuffers()
 {
     SDL_GL_SwapWindow(window);
 }
 
-void Window::UpdateEvents()
+void Window::pollEvents()
 {
     SDL_Event e;
     while(SDL_PollEvent(&e))
@@ -83,6 +83,12 @@ void Window::UpdateEvents()
             break;
         }
     }
+}
+
+void Window::clear()
+{
+    glClearColor(0, 0, 0, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
 }
 
 Window::~Window()

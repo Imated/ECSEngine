@@ -3,6 +3,7 @@
 #include "glm/fwd.hpp"
 #include "glm/detail/type_quat.hpp"
 #include "glm/gtc/quaternion.hpp"
+#include "Rendering/Renderer.h"
 
 class TransformComponent : public Component
 {
@@ -11,7 +12,7 @@ public:
     ~TransformComponent() override;
 
     void initialize(Entity& e) override;
-    void render(float deltaTime, Entity& e, Window& window) override;
+    void update(Entity& e) override;
     
     void setPosition(glm::vec3 newPosition);
     void setRotation(glm::vec3 newRotation);

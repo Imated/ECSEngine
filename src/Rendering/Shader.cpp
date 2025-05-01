@@ -16,7 +16,7 @@ Shader::Shader(const char* vertexFilename, const char* fragmentFilename)
 
 GLuint Shader::CreateShader(const char* filename, GLenum type) const
 {
-    const std::string source = GetFileContents(filename);
+    const std::string source = readFile(filename);
     const char* shaderSource = source.c_str();
 
     GLint isCompiled = 0;

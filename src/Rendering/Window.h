@@ -13,8 +13,9 @@ public:
     Window(int width, int height, const std::string& title = "Game");
     ~Window();
 
-    void Update();
-    void UpdateEvents();
+    void swapBuffers();
+    void pollEvents();
+    void clear();
     
     void SetTitle(const std::string&) const;
 

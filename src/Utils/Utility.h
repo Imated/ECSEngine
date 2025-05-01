@@ -5,7 +5,7 @@
 #include <ios>
 #include "Logger.h"
 
-inline std::string GetFileContents(const char* filename)
+inline std::string readFile(const char* filename)
 {
     std::ifstream in(filename, std::ios::binary);
     if(in)

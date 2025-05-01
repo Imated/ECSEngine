@@ -2,11 +2,9 @@
 
 #include <random>
 
-#include "Game.h"
 #include "Components/Entity.h"
 #include "Components/SpriteComponent.h"
 #include "Components/TransformComponent.h"
-#include "Input/Input.h"
 
 Entity player;
 TransformComponent* playerTransform;
@@ -29,36 +27,36 @@ Scene::Scene()
     INFO("%f", direction);
 }
 
-void Scene::Update(float deltaTime)
+void Scene::update(float deltaTime)
 {
     static float ROT_SPEED = 1.5f;
     static float MOVE_SPEED = 750.0f;
     static float ACCELERATION = 50.0f;
-    Input& input = Game::GetInput();
-    if(input.GetKey(SDLK_a))
-    {
-        playerTransform->setRotation(playerTransform->getRotation().z - ROT_SPEED * deltaTime);
-        direction = ROT_SPEED / 1.5f;
-    }
-    else if(input.GetKey(SDLK_d))
-    {
-        playerTransform->setRotation(playerTransform->getRotation().z + ROT_SPEED * deltaTime);
-        direction = -ROT_SPEED / 1.5f;
-    }
-    else
-    {
-        playerTransform->setRotation(playerTransform->getRotation().z - direction * deltaTime);
-    }
-
-    if(input.GetKey(SDLK_SPACE))
-    {
-        velocity += glm::vec2(sin(playerTransform->getRotation().z), -cos(playerTransform->getRotation().z)) * ACCELERATION * deltaTime;
-        velocity = glm::vec2(glm::clamp(velocity.x, -MOVE_SPEED, MOVE_SPEED), glm::clamp(velocity.y, -MOVE_SPEED, MOVE_SPEED));
-    }
-    playerTransform->setPosition(glm::vec3(playerTransform->getPosition().x + velocity.x * deltaTime, playerTransform->getPosition().y + velocity.y * deltaTime, 0.0f));
+    // if(input.GetKey(SDLK_a))
+    // {
+    //     playerTransform->setRotation(playerTransform->getRotation().z - ROT_SPEED * deltaTime);
+    //     direction = ROT_SPEED / 1.5f;
+    // }
+    // else if(input.GetKey(SDLK_d))
+    // {
+    //     playerTransform->setRotation(playerTransform->getRotation().z + ROT_SPEED * deltaTime);
+    //     direction = -ROT_SPEED / 1.5f;
+    // }
+    // else
+    // {
+    //     playerTransform->setRotation(playerTransform->getRotation().z - direction * deltaTime);
+    // }
+    //
+    // if(input.GetKey(SDLK_SPACE))
+    // {
+    //     velocity += glm::vec2(sin(playerTransform->getRotation().z), -cos(playerTransform->getRotation().z)) * ACCELERATION * deltaTime;
+    //     velocity = glm::vec2(glm::clamp(velocity.x, -MOVE_SPEED, MOVE_SPEED), glm::clamp(velocity.y, -MOVE_SPEED, MOVE_SPEED));
+    // }
+    //playerTransform->setPosition(glm::vec3(playerTransform->getPosition().x + velocity.x * deltaTime, playerTransform->getPosition().y + velocity.y * deltaTime, 0.0f));
+    playerRenderer->update(player);
 }
 
-void Scene::Render()
+void Scene::render(Window* window, Renderer* renderer)
 {
-    playerRenderer->render(0, player, Game::GetWindow());
+    playerRenderer->render(player, *window, *renderer);
 }

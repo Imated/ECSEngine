@@ -1,29 +1,29 @@
 ﻿#pragma once
-#include <vector>
+
 #include "Entity.h"
-#include "glm/ext/matrix_clip_space.hpp"
-#include "glm/gtc/type_ptr.hpp"
-#include "Rendering/Shader.h"
 #include "Rendering/Texture.h"
-#include "Rendering/Window.h"
+
+class Window;
+class Renderer;
+class Shader;
+class Component;
 
 class SpriteComponent : public Component
 {
 public:
     SpriteComponent(Texture* texture = nullptr) : texture(texture) { }
 
-    ~SpriteComponent() override;
+    void render(Entity& e, Window& window, Renderer& renderer);
 
-    void initialize(Entity& e) override;
-    void render(float deltaTime, Entity& e, Window& window) override;
-
-    Shader GetShader() const
+    void initialize(Entity& e) override { }
+    void update(Entity& e) override { }
+    
+    Shader* GetShader() const
     {
         return shader;
     }
 
 private:
-    Shader shader;
-    GLuint quadVAO = 0;
+    Shader* shader;
     Texture* texture;
 };

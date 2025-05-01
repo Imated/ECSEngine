@@ -55,9 +55,11 @@ Texture::Texture(const char* filename, GLint wrapMode, GLint filterMode)
 
     float borderColor[] = {PRIMARY_COLOR.x, PRIMARY_COLOR.y, PRIMARY_COLOR.z, 1.0f};
     glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
     
     LogError();
-    INFO("Texture Loaded.");
+    INFO("Texture Loaded: %d x %d", width, height);
 }
 
 Texture::~Texture()
@@ -65,8 +67,7 @@ Texture::~Texture()
     stbi_image_free(data);
 }
 
-void Texture::Use() const
+void Texture::bind()
 {
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-    LogError();
+    glBindTexture(GL_TEXTURE_2D, handle);
 }

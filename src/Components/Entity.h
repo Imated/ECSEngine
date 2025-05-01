@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-#include "Game/Game.h"
+#include "Rendering/Renderer.h"
 #include "Rendering/Window.h"
 #include "Utils/Logger.h"
 
@@ -15,7 +15,7 @@ class Component
 public:
     virtual ~Component() = default;
     virtual void initialize(Entity& e) = 0;
-    virtual void render(float deltaTime, Entity& e, Window& window) = 0;
+    virtual void update(Entity& e) = 0;
 };
 
 class Entity
