@@ -12,7 +12,7 @@ class Shader;
 class SpriteComponent : public Component
 {
 public:
-    SpriteComponent(Texture* texture = nullptr) : texture(texture) { }
+    SpriteComponent(Texture* texture = nullptr);
 
     void render(Entity& e, Window& window, Renderer& renderer, Camera* camera);
 

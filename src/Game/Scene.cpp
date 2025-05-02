@@ -20,7 +20,7 @@ Scene::Scene()
 {
     camera = Entity();
     cameraComponent = camera.AddComponent<Camera>(true);
-    cameraComponent->zoom = 0.5;
+    cameraComponent->zoom = 2;
     
     player = Entity();
     playerTransform = player.GetComponent<TransformComponent>();

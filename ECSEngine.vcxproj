@@ -242,6 +242,7 @@
     </ClCompile>
     <ClCompile Include="src\Rendering\Renderer.cpp" />
     <ClCompile Include="src\Rendering\Shader.cpp" />
+    <ClCompile Include="src\Rendering\ShaderLibrary.cpp" />
     <ClCompile Include="src\Rendering\Texture.cpp" />
     <ClCompile Include="src\Rendering\Window.cpp" />
     <ClCompile Include="src\Utils\Logger.cpp" />
@@ -717,6 +718,7 @@
     <ClInclude Include="src\Input\InputHandler.h" />
     <ClInclude Include="src\Rendering\Renderer.h" />
     <ClInclude Include="src\Rendering\Shader.h" />
+    <ClInclude Include="src\Rendering\ShaderLibrary.h" />
     <ClInclude Include="src\Rendering\Texture.h" />
     <ClInclude Include="src\Rendering\Window.h" />
     <ClInclude Include="src\Utils\Color.h" />
@@ -771,6 +773,7 @@
     <Content Include="libs\SDL2\README-SDL.txt" />
     <Content Include="libs\SDL2\README.txt" />
     <Content Include="libs\SDL2\WhatsNew.txt" />
+    <Content Include="res\Default.png" />
     <Content Include="res\Player.png" />
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,6 @@ glm::mat4 Camera::getProjection(float screenWidth, float screenHeight) const
 
 glm::mat4 Camera::getVP(float screenWidth, float screenHeight) const
 {
-    INFO("zoom: %f", zoom);
     return getProjection(screenWidth, screenHeight) * getViewMatrix();
 }
 

@@ -5,7 +5,6 @@
 class Camera : public Component
 {
 public:
-
     Camera(bool makePrimary);
 
     void initialize(Entity& e) override { }

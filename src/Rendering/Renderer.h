@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include <memory>
 #include <vector>
 #include "Shader.h"
 #include "glm/ext/matrix_clip_space.hpp"
@@ -12,10 +13,9 @@ public:
     Renderer();
 
     void renderQuad(float width, float height);
-    Shader* getDefaultShader() { return defaultShader; }
+    std::shared_ptr<Shader> defaultShader;
 
 private:
     GLuint quadVAO = 0;
     GLuint quadVBO = 0;
-    Shader* defaultShader;
 };

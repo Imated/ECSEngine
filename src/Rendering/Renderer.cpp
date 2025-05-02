@@ -1,12 +1,17 @@
 ﻿#include "Renderer.h"
+
+#include "ShaderLibrary.h"
 #include "glm/gtc/type_ptr.hpp"
-#include "Rendering/Shader.h"
 #include "Rendering/Window.h"
 
 Renderer::Renderer()
 {
-    defaultShader = new Shader("res/default.vert", "res/default.frag");
-
+    defaultShader = ShaderLibrary::Load("default",
+        {
+            { Vertex, "res/default.vert"},
+            { Fragment, "res/default.frag" }
+        });
+    
     glDisable(GL_DEPTH_TEST);
     glDisable(GL_CULL_FACE);
 }
@@ -60,3 +65,5 @@ void Renderer::renderQuad(float width, float height)
     glBindVertexArray(quadVAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
+
+

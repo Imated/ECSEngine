@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "glad/glad.h"
-#include "Utils/Utility.h"
 #include "Utils/Logger.h"
 #include "vector"
 

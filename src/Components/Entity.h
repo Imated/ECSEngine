@@ -16,9 +16,9 @@ class Entity
 public:
     Entity()
     {
-        AddComponent<TransformComponent>();
+        transform = AddComponent<TransformComponent>();
     }
-    
+
     template <typename T, typename... Args>
     T* AddComponent(Args&&... args)
     {
@@ -65,6 +65,8 @@ public:
         }
         return false;
     }
+
+    TransformComponent* transform;
 private:
     std::vector<std::unique_ptr<Component>> components;
     
