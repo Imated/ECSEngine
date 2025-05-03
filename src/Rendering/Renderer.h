@@ -10,12 +10,13 @@
 class Renderer
 {
 public:
-    Renderer();
+    ~Renderer();
 
-    void renderQuad(float width, float height);
-    std::shared_ptr<Shader> defaultShader;
+    static void initialize();
+    static void renderQuad(float width, float height);
+    static void setClearColor(const glm::vec4& color);
 
 private:
-    GLuint quadVAO = 0;
-    GLuint quadVBO = 0;
+    static GLuint quadVAO;
+    static GLuint quadVBO;
 };

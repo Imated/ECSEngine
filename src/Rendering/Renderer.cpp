@@ -4,16 +4,24 @@
 #include "glm/gtc/type_ptr.hpp"
 #include "Rendering/Window.h"
 
-Renderer::Renderer()
+GLuint Renderer::quadVAO;
+GLuint Renderer::quadVBO;
+
+void Renderer::initialize()
 {
-    defaultShader = ShaderLibrary::Load("default",
-        {
-            { Vertex, "res/default.vert"},
-            { Fragment, "res/default.frag" }
-        });
+    ShaderLibrary::Load("default",
+    {
+        { Vertex, "res/default.vert"},
+        { Fragment, "res/default.frag" }
+    });
     
     glDisable(GL_DEPTH_TEST);
     glDisable(GL_CULL_FACE);
+}
+
+Renderer::~Renderer()
+{
+    ShaderLibrary::Free("default");
 }
 
 void Renderer::renderQuad(float width, float height)
@@ -66,4 +74,8 @@ void Renderer::renderQuad(float width, float height)
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
 
+void Renderer::setClearColor(const glm::vec4& color)
+{
+    glClearColor(color.r, color.g, color.b, color.a);
+}
 

@@ -87,7 +87,6 @@ void Window::pollEvents()
 
 void Window::clear()
 {
-    glClearColor(0, 0, 0, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 }
 

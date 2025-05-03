@@ -162,9 +162,11 @@
     <ClCompile Include="libs\glad\src\glad.c" />
     <ClCompile Include="libs\glm\glm\detail\glm.cpp" />
     <ClCompile Include="src\Components\Camera.cpp" />
+    <ClCompile Include="src\Components\Player.cpp" />
     <ClCompile Include="src\Components\SpriteComponent.cpp" />
     <ClCompile Include="src\Components\TransformComponent.cpp" />
     <ClCompile Include="src\Game\Scene.cpp" />
+    <ClCompile Include="src\Input\Input.cpp" />
     <ClCompile Include="src\main.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -710,12 +712,12 @@
     <ClInclude Include="src\Components\Camera.h" />
     <ClInclude Include="src\Components\Component.h" />
     <ClInclude Include="src\Components\Entity.h" />
+    <ClInclude Include="src\Components\Player.h" />
     <ClInclude Include="src\Components\SpriteComponent.h" />
     <ClInclude Include="src\Components\TransformComponent.h" />
     <ClInclude Include="src\Constants.h" />
-    <ClInclude Include="src\Game\Player.h" />
     <ClInclude Include="src\Game\Scene.h" />
-    <ClInclude Include="src\Input\InputHandler.h" />
+    <ClInclude Include="src\Input\Input.h" />
     <ClInclude Include="src\Rendering\Renderer.h" />
     <ClInclude Include="src\Rendering\Shader.h" />
     <ClInclude Include="src\Rendering\ShaderLibrary.h" />

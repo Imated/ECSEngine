@@ -14,7 +14,7 @@ class SpriteComponent : public Component
 public:
     SpriteComponent(Texture* texture = nullptr);
 
-    void render(Entity& e, Window& window, Renderer& renderer, Camera* camera);
+    void render(Entity& e, Window& window, Camera* camera);
 
     void initialize(Entity& e) override { }
     void update(Entity& e) override { }

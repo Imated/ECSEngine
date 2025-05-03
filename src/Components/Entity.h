@@ -66,7 +66,17 @@ public:
         return false;
     }
 
+    void update()
+    {
+        for (const auto& component : components)
+        {
+            if(component->isActive && isActive)
+                component->update(*this);
+        }
+    }
+
     TransformComponent* transform;
+    bool isActive = true;
 private:
     std::vector<std::unique_ptr<Component>> components;
     
