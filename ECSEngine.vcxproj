@@ -166,6 +166,7 @@
     <ClCompile Include="src\Components\SpriteComponent.cpp" />
     <ClCompile Include="src\Components\TransformComponent.cpp" />
     <ClCompile Include="src\Game\Scene.cpp" />
+    <ClCompile Include="src\Game\Time.cpp" />
     <ClCompile Include="src\Input\Input.cpp" />
     <ClCompile Include="src\main.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -717,6 +718,7 @@
     <ClInclude Include="src\Components\TransformComponent.h" />
     <ClInclude Include="src\Constants.h" />
     <ClInclude Include="src\Game\Scene.h" />
+    <ClInclude Include="src\Game\Time.h" />
     <ClInclude Include="src\Input\Input.h" />
     <ClInclude Include="src\Rendering\Renderer.h" />
     <ClInclude Include="src\Rendering\Shader.h" />

@@ -45,9 +45,6 @@ Window::Window(int width, int height, const std::string& title): isOpen(true)
     }
     INFO("Successfully Initialized OpenGL.");
 
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
     glViewport(0, 0, width, height);
 
     DEBUG("Initialized Successfully.");

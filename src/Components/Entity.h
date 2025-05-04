@@ -66,6 +66,13 @@ public:
         return false;
     }
 
+    template <typename T, typename... Args>
+    Entity&& WithComponent(Args&&... args)
+    {
+        AddComponent<T>(std::forward<Args>(args)...);
+        return std::move(*this);
+    }
+    
     void update()
     {
         for (const auto& component : components)

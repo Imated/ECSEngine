@@ -2,6 +2,7 @@
 #include "Components/Player.h"
 #include "Components/SpriteComponent.h"
 #include "Game/Scene.h"
+#include "Game/Time.h"
 #include "Input/Input.h"
 #include "Rendering/Renderer.h"
 #include "Rendering/Texture.h"
@@ -19,9 +20,7 @@ int main(int argc, char* argv[])
     auto camera = Entity();
     auto cameraComponent = camera.AddComponent<Camera>(true);
     
-    auto player = Entity();
-    auto playerRenderer = player.AddComponent<SpriteComponent>(new Texture("res/Player.png"));
-    auto playerMovement = player.AddComponent<Player>();
+    auto player = Entity().WithComponent<SpriteComponent>(new Texture("res/Player.png")).WithComponent<Player>();
 
     scene.AddEntity(camera, 0);
     scene.AddEntity(player, 1);
@@ -29,6 +28,7 @@ int main(int argc, char* argv[])
     while (window.IsOpen())
     {
         // PRE FRAME
+        Time::startFrame();
         window.pollEvents();
         window.clear();
 
@@ -38,6 +38,7 @@ int main(int argc, char* argv[])
         // POST FRAME
         window.swapBuffers();
         Input::update();
+        Time::endFrame();
     }
 
     return 0;
